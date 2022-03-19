@@ -29,8 +29,8 @@ public class AnalyseCookiesFileCommand implements Callable<Integer> {
 
     public static CookieAnalyser newAnalyzer(Path pathToFile, String date) {
         var dataFactory = new CsvFileCookieLinesFactory(pathToFile);
-        var dateMatcher = new OffsetDateMatcher(date);
-        return new CookieAnalyser(dataFactory, dateMatcher);
+        var dateComparator = new DateToOffsetDateTimeComparator(date);
+        return new CookieAnalyser(dataFactory, dateComparator);
     }
 
     public static void main(String... args) {
